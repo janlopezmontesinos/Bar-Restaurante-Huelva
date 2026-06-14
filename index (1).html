@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bar Restaurante Huelva en Rubí, Barcelona. Cocina casera mediterránea, tapas, raciones, paellas y menú del día. Tradición y sabor desde hace décadas." />
+  <meta name="keywords" content="restaurante Rubí, bar Huelva, tapas Rubí, paella Rubí, menú del día Rubí, restaurante Barcelona" />
+  <title>Bar Restaurante Huelva | Rubí, Barcelona</title>
+
+  <!-- Google Fonts: Playfair Display (display) + Lato (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --terracotta:   #C0533A;
+      --vino:         #7B2335;
+      --beige:        #F5EFE6;
+      --beige-dark:   #E8DDD0;
+      --oliva:        #5C6B3A;
+      --dorado:       #C9A84C;
+      --texto:        #2A1F1A;
+      --texto-suave:  #6B5A52;
+      --blanco:       #FFFFFF;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Lato', sans-serif;
+
+      --radio:        4px;
+      --sombra:       0 4px 24px rgba(42,31,26,.12);
+      --sombra-hover: 0 8px 36px rgba(42,31,26,.2);
+
+      --transition: .3s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--texto);
+      background: var(--blanco);
+      line-height: 1.7;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
+
+    /* ============================================================
+       UTILIDADES
+    ============================================================ */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--vino);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--texto-suave);
+      max-width: 600px;
+    }
+
+    .section-header { margin-bottom: 52px; }
+
+    section { padding: 96px 0; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: var(--radio);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: var(--blanco);
+    }
+    .btn-primary:hover {
+      background: var(--vino);
+      transform: translateY(-2px);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--blanco);
+      border-color: var(--blanco);
+    }
+    .btn-outline:hover {
+      background: var(--blanco);
+      color: var(--vino);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    nav.scrolled {
+      background: rgba(123,35,53,.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--blanco);
+      line-height: 1;
+    }
+
+    .nav-brand-sub {
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--dorado);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.88);
+      font-size: .88rem;
+      font-weight: 400;
+      letter-spacing: .05em;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--dorado);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--blanco); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-reserva {
+      background: var(--terracotta);
+      color: var(--blanco) !important;
+      padding: 8px 20px;
+      border-radius: var(--radio);
+      font-weight: 700 !important;
+    }
+    .nav-reserva:hover { background: var(--dorado) !important; color: var(--texto) !important; }
+    .nav-reserva::after { display: none !important; }
+
+    /* Hamburger */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .nav-burger span {
+      width: 24px; height: 2px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: all var(--transition);
+      display: block;
+    }
+    .nav-burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: rgba(123,35,53,.97);
+      padding: 24px;
+      gap: 4px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: rgba(255,255,255,.88);
+      font-size: 1rem;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #inicio {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    /* Degradado riquísimo que evoca calidez mediterránea */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(123,35,53,.85) 0%,
+          rgba(192,83,58,.6) 45%,
+          rgba(42,31,26,.75) 100%
+        ),
+        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80')
+          center/cover no-repeat;
+    }
+
+    /* Textura sutil */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp .8s .2s forwards;
+    }
+
+    .hero-eyebrow-line {
+      width: 48px; height: 2px;
+      background: var(--dorado);
+    }
+
+    .hero-eyebrow-text {
+      font-size: .75rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: var(--blanco);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeUp .8s .4s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--dorado);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.82);
+      max-width: 520px;
+      margin-bottom: 40px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp .8s .6s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .8s .8s forwards;
+    }
+
+    /* Scroll cue */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.55);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      animation: pulse 2s infinite;
+    }
+
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent);
+    }
+
+    /* ============================================================
+       NOSOTROS
+    ============================================================ */
+    #nosotros { background: var(--beige); }
+
+    .nosotros-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .nosotros-img-wrap {
+      position: relative;
+    }
+
+    .nosotros-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 2px;
+      box-shadow: var(--sombra);
+    }
+
+    /* Foto flotante decorativa */
+    .nosotros-img-accent {
+      position: absolute;
+      bottom: -28px;
+      right: -28px;
+      width: 55%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 6px solid var(--beige);
+      border-radius: 2px;
+      box-shadow: var(--sombra);
+    }
+
+    .nosotros-badge {
+      position: absolute;
+      top: 24px;
+      left: -24px;
+      background: var(--vino);
+      color: var(--blanco);
+      padding: 16px 20px;
+      text-align: center;
+      box-shadow: var(--sombra);
+    }
+    .nosotros-badge-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--dorado);
+      line-height: 1;
+      display: block;
+    }
+    .nosotros-badge-text {
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .nosotros-texto p {
+      color: var(--texto-suave);
+      margin-bottom: 18px;
+      font-size: 1.02rem;
+    }
+
+    .nosotros-valores {
+      display: flex;
+      gap: 24px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .nosotros-valor {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .valor-icon {
+      font-size: 1.5rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .valor-info h4 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--vino);
+      margin-bottom: 2px;
+    }
+
+    .valor-info p {
+      font-size: .82rem;
+      color: var(--texto-suave);
+      margin: 0;
+    }
+
+    /* ============================================================
+       CARTA / MENÚ
+    ============================================================ */
+    #carta { background: var(--blanco); }
+
+    /* Tabs de categorías */
+    .menu-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .menu-tab {
+      padding: 10px 22px;
+      border: 2px solid var(--beige-dark);
+      border-radius: 40px;
+      background: transparent;
+      color: var(--texto-suave);
+      font-family: var(--font-body);
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .menu-tab:hover,
+    .menu-tab.active {
+      background: var(--vino);
+      border-color: var(--vino);
+      color: var(--blanco);
+    }
+
+    /* Panel de items */
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--beige-dark);
+      border: 1px solid var(--beige-dark);
+    }
+
+    .menu-item {
+      background: var(--blanco);
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      transition: background var(--transition);
+    }
+
+    .menu-item:hover { background: var(--beige); }
+
+    .menu-item-info { flex: 1; }
+
+    .menu-item-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--texto);
+      margin-bottom: 4px;
+    }
+
+    .menu-item-desc {
+      font-size: .82rem;
+      color: var(--texto-suave);
+      line-height: 1.5;
+    }
+
+    .menu-item-badge {
+      display: inline-block;
+      font-size: .65rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--terracotta);
+      color: var(--blanco);
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--vino);
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+
+    /* Banner menú del día */
+    .menu-dia-banner {
+      margin-top: 48px;
+      background: linear-gradient(135deg, var(--vino), var(--terracotta));
+      border-radius: var(--radio);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      color: var(--blanco);
+    }
+
+    .menu-dia-info h3 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 8px;
+      color: var(--blanco);
+    }
+
+    .menu-dia-info p {
+      color: rgba(255,255,255,.8);
+      font-size: .95rem;
+    }
+
+    .menu-dia-precio {
+      text-align: center;
+    }
+
+    .precio-valor {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--dorado);
+      line-height: 1;
+    }
+
+    .precio-label {
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       GALERÍA
+    ============================================================ */
+    #galeria { background: var(--beige); }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 200px);
+      gap: 12px;
+    }
+
+    .galeria-item {
+      overflow: hidden;
+      border-radius: var(--radio);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .galeria-item:hover img { transform: scale(1.06); }
+
+    .galeria-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(123,35,53,.45), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .galeria-item:hover::after { opacity: 1; }
+
+    /* Celdas especiales */
+    .galeria-item.tall  { grid-row: span 2; }
+    .galeria-item.wide  { grid-column: span 2; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radio);
+      animation: zoomIn .3s ease;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 28px;
+      font-size: 2rem;
+      color: var(--blanco);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ============================================================
+       HORARIOS
+    ============================================================ */
+    #horarios {
+      background: var(--vino);
+      padding: 80px 0;
+    }
+
+    #horarios .section-title { color: var(--blanco); }
+    #horarios .section-label { color: var(--dorado); }
+    #horarios .section-subtitle { color: rgba(255,255,255,.72); }
+
+    .horarios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 48px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .horario-card {
+      background: rgba(255,255,255,.05);
+      padding: 28px 24px;
+      border-top: 3px solid transparent;
+      transition: all var(--transition);
+    }
+
+    .horario-card.hoy {
+      background: rgba(201,168,76,.12);
+      border-top-color: var(--dorado);
+    }
+
+    .horario-dia {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blanco);
+      margin-bottom: 6px;
+    }
+
+    .horario-hoy-badge {
+      display: inline-block;
+      font-size: .6rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--dorado);
+      color: var(--texto);
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .horario-horas {
+      font-size: .88rem;
+      color: rgba(255,255,255,.7);
+      line-height: 1.8;
+    }
+
+    .horario-cerrado {
+      color: rgba(255,255,255,.35);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       UBICACIÓN
+    ============================================================ */
+    #ubicacion { background: var(--beige); }
+
+    .ubicacion-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .ubicacion-info h3 {
+      font-size: 1.4rem;
+      color: var(--vino);
+      margin-bottom: 24px;
+    }
+
+    .ubicacion-dato {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .dato-icon {
+      font-size: 1.3rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .dato-label {
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .dato-valor {
+      font-size: .95rem;
+      color: var(--texto);
+      font-weight: 400;
+    }
+
+    .dato-valor a:hover { color: var(--terracotta); }
+
+    .mapa-wrap {
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      height: 420px;
+    }
+
+    .mapa-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ============================================================
+       CONTACTO
+    ============================================================ */
+    #contacto { background: var(--blanco); }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contacto-canales { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+
+    .canal-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      border: 1px solid var(--beige-dark);
+      border-radius: var(--radio);
+      transition: all var(--transition);
+      text-decoration: none;
+      color: var(--texto);
+    }
+
+    .canal-card:hover {
+      border-color: var(--terracotta);
+      box-shadow: var(--sombra);
+      transform: translateX(4px);
+    }
+
+    .canal-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .canal-icon.tel   { background: rgba(192,83,58,.12); }
+    .canal-icon.wa    { background: rgba(37,211,102,.12); }
+    .canal-icon.mail  { background: rgba(123,35,53,.12); }
+    .canal-icon.ig    { background: rgba(201,168,76,.12); }
+
+    .canal-label {
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .canal-valor {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    /* Form */
+    .contacto-form-wrap {
+      background: var(--beige);
+      border-radius: var(--radio);
+      padding: 40px;
+    }
+
+    .contacto-form-wrap h3 {
+      font-size: 1.3rem;
+      color: var(--vino);
+      margin-bottom: 8px;
+    }
+
+    .contacto-form-wrap p {
+      font-size: .88rem;
+      color: var(--texto-suave);
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--beige-dark);
+      border-radius: var(--radio);
+      font-family: var(--font-body);
+      font-size: .95rem;
+      color: var(--texto);
+      background: var(--blanco);
+      transition: border-color var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--terracotta);
+    }
+
+    textarea.form-control { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--vino);
+      color: var(--blanco);
+      border: none;
+      border-radius: var(--radio);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
+      letter-spacing: .06em;
+    }
+
+    .form-submit:hover {
+      background: var(--terracotta);
+      transform: translateY(-2px);
+      box-shadow: var(--sombra);
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(92,107,58,.12);
+      border: 1px solid var(--oliva);
+      color: var(--oliva);
+      padding: 14px 18px;
+      border-radius: var(--radio);
+      font-size: .9rem;
+      margin-top: 16px;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--texto);
+      color: rgba(255,255,255,.7);
+      padding: 56px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--blanco);
+      margin-bottom: 4px;
+    }
+
+    .footer-brand-tag {
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 16px;
+    }
+
+    .footer-desc {
+      font-size: .88rem;
+      line-height: 1.7;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      transition: all var(--transition);
+    }
+
+    .footer-social a:hover {
+      border-color: var(--dorado);
+      color: var(--dorado);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-body);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      font-size: .88rem;
+      color: rgba(255,255,255,.65);
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover { color: var(--blanco); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p { font-size: .8rem; }
+
+    .footer-bottom a { color: var(--dorado); }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    /* ============================================================
+       ANIMACIONES
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: .6; }
+      50%       { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(.9); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .galeria-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .galeria-item.tall, .galeria-item.wide {
+        grid-row: span 1;
+        grid-column: span 1;
+      }
+      .galeria-item { height: 220px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+
+      .nosotros-grid { grid-template-columns: 1fr; gap: 48px; }
+      .nosotros-img-accent { display: none; }
+      .nosotros-badge { left: 16px; top: 16px; }
+
+      .ubicacion-layout { grid-template-columns: 1fr; }
+      .mapa-wrap { height: 300px; }
+
+      .contacto-grid { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      .menu-dia-banner { padding: 28px 24px; }
+
+      .galeria-grid { grid-template-columns: 1fr 1fr; }
+      .galeria-item { height: 180px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn { justify-content: center; }
+      .galeria-grid { grid-template-columns: 1fr; }
+      .galeria-item { height: 220px; }
+      .contacto-form-wrap { padding: 24px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#inicio" class="nav-brand">
+        <span class="nav-brand-name">Bar Restaurante Huelva</span>
+        <span class="nav-brand-sub">Rubí, Barcelona · Desde 1989</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#horarios">Horarios</a></li>
+        <li><a href="#ubicacion">Cómo llegar</a></li>
+        <li><a href="#contacto" class="nav-reserva">Reservar mesa</a></li>
+      </ul>
+
+      <button class="nav-burger" id="burger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#nosotros" class="mobile-link">Nosotros</a>
+      <a href="#carta"    class="mobile-link">Carta</a>
+      <a href="#galeria"  class="mobile-link">Galería</a>
+      <a href="#horarios" class="mobile-link">Horarios</a>
+      <a href="#ubicacion" class="mobile-link">Cómo llegar</a>
+      <a href="#contacto"  class="mobile-link">Reservar mesa</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="inicio">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span class="hero-eyebrow-text">Cocina casera mediterránea · Rubí, Barcelona</span>
+        </div>
+
+        <h1 class="hero-title">
+          Bar Restaurante<br /><em>Huelva</em>
+        </h1>
+
+        <p class="hero-subtitle">
+          Más de tres décadas sirviendo los sabores de siempre con el calor de casa.
+          Tapas, raciones, paellas y el mejor menú del día de Rubí.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#carta" class="btn btn-primary">📋 Ver la carta</a>
+          <a href="#contacto" class="btn btn-outline">🍽️ Reservar mesa</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Descubre</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOBRE NOSOTROS
+  ============================================================ -->
+  <section id="nosotros">
+    <div class="container">
+      <div class="nosotros-grid">
+
+        <!-- Imagen -->
+        <div class="nosotros-img-wrap reveal">
+          <img
+            class="nosotros-img-main"
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80"
+            alt="Interior del Bar Restaurante Huelva"
+            loading="lazy"
+          />
+          <img
+            class="nosotros-img-accent"
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80"
+            alt="Platos del Bar Restaurante Huelva"
+            loading="lazy"
+          />
+          <div class="nosotros-badge">
+            <span class="nosotros-badge-num">+35</span>
+            <span class="nosotros-badge-text">Años de sabor</span>
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div class="nosotros-texto reveal">
+          <span class="section-label">Nuestra historia</span>
+          <h2 class="section-title">Un clásico que Rubí lleva en el corazón</h2>
+
+          <p>
+            El Bar Restaurante Huelva nació en 1989 en el corazón del barrio, cuando la familia fundadora abrió sus puertas con una idea sencilla pero poderosa: cocinar con los mismos ingredientes y el mismo cariño que en casa.
+          </p>
+          <p>
+            Más de treinta y cinco años después, ese espíritu sigue intacto. Los vecinos de Rubí conocen de sobra nuestras <strong>patatas bravas</strong>, reconocidas como unas de las mejores de la zona, nuestras paellas del domingo y los menús del día que no dejan ni una mesa vacía.
+          </p>
+          <p>
+            Hemos visto crecer generaciones enteras. Los hijos de aquellos primeros clientes ahora nos traen a sus propios hijos. Eso, más que cualquier premio, es lo que nos enorgullece.
+          </p>
+
+          <div class="nosotros-valores">
+            <div class="nosotros-valor">
+              <span class="valor-icon">🫒</span>
+              <div class="valor-info">
+                <h4>Producto fresco</h4>
+                <p>Mercado local cada mañana</p>
+              </div>
+            </div>
+            <div class="nosotros-valor">
+              <span class="valor-icon">👨‍🍳</span>
+              <div class="valor-info">
+                <h4>Cocina de autor</h4>
+                <p>Recetas familiares de siempre</p>
+              </div>
+            </div>
+            <div class="nosotros-valor">
+              <span class="valor-icon">🏠</span>
+              <div class="valor-info">
+                <h4>Ambiente acogedor</h4>
+                <p>Como en casa, siempre</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CARTA / MENÚ
+  ============================================================ -->
+  <section id="carta">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Lo que preparamos</span>
+        <h2 class="section-title">Nuestra carta</h2>
+        <p class="section-subtitle">Cocina mediterránea y española de mercado, con producto fresco y temporada.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="menu-tabs reveal">
+        <button class="menu-tab active" data-panel="tapas">Entrantes y Tapas</button>
+        <button class="menu-tab" data-panel="raciones">Raciones</button>
+        <button class="menu-tab" data-panel="principales">Platos principales</button>
+        <button class="menu-tab" data-panel="paellas">Paellas y Arroces</button>
+        <button class="menu-tab" data-panel="carnes">Carnes</button>
+        <button class="menu-tab" data-panel="pescados">Pescados</button>
+        <button class="menu-tab" data-panel="postres">Postres</button>
+        <button class="menu-tab" data-panel="bebidas">Bebidas</button>
+      </div>
+
+      <!-- ── PANEL: Tapas ── -->
+      <div class="menu-panel active" id="panel-tapas">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-badge">⭐ Especialidad</div>
+              <div class="menu-item-name">Patatas Bravas Huelva</div>
+              <div class="menu-item-desc">Crujientes por fuera, tiernas por dentro. Salsa brava casera con el toque secreto de la casa.</div>
+            </div>
+            <div class="menu-item-price">6,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Jamón ibérico con pan con tomate</div>
+              <div class="menu-item-desc">Jamón ibérico de bellota loncheado al momento, pan de payés tostado y tomate de temporada.</div>
+            </div>
+            <div class="menu-item-price">9,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Croquetas de jamón (6 uds.)</div>
+              <div class="menu-item-desc">Bechamel cremosa con trozos generosos de jamón serrano. Rebozado fino y crujiente.</div>
+            </div>
+            <div class="menu-item-price">7,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Boquerones en vinagre</div>
+              <div class="menu-item-desc">Boquerones marinados en casa con ajo, perejil y aceite de oliva virgen extra.</div>
+            </div>
+            <div class="menu-item-price">6,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Gambas al ajillo</div>
+              <div class="menu-item-desc">Gambas frescas salteadas con ajo dorado, guindilla y aceite de oliva. Para mojar pan.</div>
+            </div>
+            <div class="menu-item-price">10,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Pimientos del piquillo rellenos</div>
+              <div class="menu-item-desc">Pimientos asados rellenos de bacalao con brandada y salsa de tomate casera.</div>
+            </div>
+            <div class="menu-item-price">8,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tortilla española de la casa</div>
+              <div class="menu-item-desc">Clásica o con cebolla caramelizada. Jugosa por dentro, dorada por fuera. Elije tú.</div>
+            </div>
+            <div class="menu-item-price">7,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tabla de quesos artesanos</div>
+              <div class="menu-item-desc">Selección de quesos españoles: manchego curado, tetilla gallega y torta del Casar. Con membrillo.</div>
+            </div>
+            <div class="menu-item-price">11,00 €</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Raciones ── -->
+      <div class="menu-panel" id="panel-raciones">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-badge">⭐ Más pedida</div>
+              <div class="menu-item-name">Ración de patatas bravas</div>
+              <div class="menu-item-desc">Versión grande de nuestra tapa estrella. Para compartir o no.</div>
+            </div>
+            <div class="menu-item-price">10,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Pulpo a la gallega</div>
+              <div class="menu-item-desc">Pulpo cocido a punto perfecto sobre cama de patata, pimentón de La Vera y aceite de oliva.</div>
+            </div>
+            <div class="menu-item-price">16,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Calamares a la romana</div>
+              <div class="menu-item-desc">Calamares frescos en aros, rebozados en tempura ligera. Con alioli de la casa.</div>
+            </div>
+            <div class="menu-item-price">12,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Albóndigas en salsa</div>
+              <div class="menu-item-desc">Albóndigas caseras de ternera y cerdo en salsa de tomate y vino tinto. Lentas y sabrosas.</div>
+            </div>
+            <div class="menu-item-price">11,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Berberechos al natural</div>
+              <div class="menu-item-desc">Berberechos gallegos abiertos al vapor. Sal, limón y pan. No hace falta más.</div>
+            </div>
+            <div class="menu-item-price">13,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Chistorra con huevo</div>
+              <div class="menu-item-desc">Chistorra artesana a la plancha con huevo frito de corral. Un clásico que nunca falla.</div>
+            </div>
+            <div class="menu-item-price">10,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Mejillones al vapor</div>
+              <div class="menu-item-desc">Mejillones frescos al vapor con salsa marinera de tomate, vino blanco y ajo.</div>
+            </div>
+            <div class="menu-item-price">11,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Champiñones al ajillo</div>
+              <div class="menu-item-desc">Champiñones Portobello salteados con ajo, perejil y un toque de jerez. Abundante y sabroso.</div>
+            </div>
+            <div class="menu-item-price">9,50 €</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Platos principales ── -->
+      <div class="menu-panel" id="panel-principales">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cocido madrileño (martes y jueves)</div>
+              <div class="menu-item-desc">Garbanzos con morcillo, chorizo, jamón, repollo y patata. Tres vuelcos completos.</div>
+            </div>
+            <div class="menu-item-price">14,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Fideuà de pescado y marisco</div>
+              <div class="menu-item-desc">Fideos rossejats con sepia, gambas y mejillones, en caldo de pescado hecho en casa.</div>
+            </div>
+            <div class="menu-item-price">15,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Lentejas estofadas con verduras</div>
+              <div class="menu-item-desc">Lentejas pardinas con zanahoria, puerro y chorizo de León. El plato que te abraza por dentro.</div>
+            </div>
+            <div class="menu-item-price">11,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Pollo al chilindrón</div>
+              <div class="menu-item-desc">Pollo de corral guisado con pimientos rojos, tomate y vino blanco. Receta de la abuela.</div>
+            </div>
+            <div class="menu-item-price">13,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Bacalao a la llauna</div>
+              <div class="menu-item-desc">Bacalao desalado al horno con tomate, ajo, pimentón y aceite de oliva. Clásico catalán.</div>
+            </div>
+            <div class="menu-item-price">14,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Estofado de ternera con patatas</div>
+              <div class="menu-item-desc">Ternera guisada a fuego lento con patatas, zanahorias y hierbas aromáticas. Melosa y jugosa.</div>
+            </div>
+            <div class="menu-item-price">14,00 €</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Paellas ── -->
+      <div class="menu-panel" id="panel-paellas">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-badge">⭐ Estrella del domingo</div>
+              <div class="menu-item-name">Paella valenciana (mín. 2 personas)</div>
+              <div class="menu-item-desc">Arroz Bomba, pollo, conejo, judía verde, garrofó y azafrán. Socarrat garantizado.</div>
+            </div>
+            <div class="menu-item-price">13,50 €/p.</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Paella de marisco (mín. 2 personas)</div>
+              <div class="menu-item-desc">Gambas, cigalas, mejillones, sepia y almejas. Fondo de pescado y fumet de la casa.</div>
+            </div>
+            <div class="menu-item-price">16,00 €/p.</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Paella mixta (mín. 2 personas)</div>
+              <div class="menu-item-desc">Lo mejor de los dos mundos: pollo, cerdo, gambas y mejillones. La favorita de las familias.</div>
+            </div>
+            <div class="menu-item-price">14,50 €/p.</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Arroz negro con alioli</div>
+              <div class="menu-item-desc">Arroz teñido con tinta de calamar, sepia y gambas. Alioli casero indispensable.</div>
+            </div>
+            <div class="menu-item-price">15,00 €/p.</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Arroz caldoso de bogavante</div>
+              <div class="menu-item-desc">Arroz meloso con bogavante fresco, tomate y azafrán. Solo los sábados (bajo reserva).</div>
+            </div>
+            <div class="menu-item-price">22,00 €/p.</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Arroz al horno con costillas</div>
+              <div class="menu-item-desc">Arroz cocido al horno con costillas de cerdo, garbanzos, tomate y morcilla. Contundente.</div>
+            </div>
+            <div class="menu-item-price">14,00 €/p.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Carnes ── -->
+      <div class="menu-panel" id="panel-carnes">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Entrecot de ternera a la brasa</div>
+              <div class="menu-item-desc">300 g de entrecot gallego marcado a la brasa. Con patatas fritas y pimientos de Padrón.</div>
+            </div>
+            <div class="menu-item-price">18,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Solomillo al vino tinto</div>
+              <div class="menu-item-desc">Solomillo de ternera con reducción de vino tinto, champiñones salteados y puré de patata.</div>
+            </div>
+            <div class="menu-item-price">20,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Costillas de cerdo ibérico al horno</div>
+              <div class="menu-item-desc">Costillas marinadas 24 h y asadas lentamente. Tiernas hasta el hueso, con glaseado de miel y tomillo.</div>
+            </div>
+            <div class="menu-item-price">16,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Conejo al ajillo</div>
+              <div class="menu-item-desc">Conejo de granja guisado con ajo, romero y vino blanco. Con patatas asadas al romero.</div>
+            </div>
+            <div class="menu-item-price">14,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Hamburguesa artesana de la casa</div>
+              <div class="menu-item-desc">180 g de ternera picada en casa, brioche tostado, cheddar curado, cebolla caramelizada y salsa Huelva.</div>
+            </div>
+            <div class="menu-item-price">13,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Pollo a la plancha con limon</div>
+              <div class="menu-item-desc">Pechuga de pollo ecológico marinada en limón, ajo y hierbas. Con ensalada fresca y aliño suave.</div>
+            </div>
+            <div class="menu-item-price">12,00 €</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Pescados ── -->
+      <div class="menu-panel" id="panel-pescados">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-badge">Fresco del día</div>
+              <div class="menu-item-name">Dorada a la sal</div>
+              <div class="menu-item-desc">Dorada entera cubierta de sal gruesa y al horno. Carne jugosa que se separa sola. Para 2 personas.</div>
+            </div>
+            <div class="menu-item-price">18,00 €/p.</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Merluza en salsa verde</div>
+              <div class="menu-item-desc">Lomos de merluza fresca con almejas, espárragos y salsa verde de perejil y vino blanco.</div>
+            </div>
+            <div class="menu-item-price">16,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Bacalao con miel y pimientos</div>
+              <div class="menu-item-desc">Lomo de bacalao confitado a baja temperatura con pimientos del piquillo caramelizados y miel.</div>
+            </div>
+            <div class="menu-item-price">16,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Salmón a la plancha con verduras</div>
+              <div class="menu-item-desc">Lomo de salmón noruego a la plancha con verduras de temporada y crema de eneldo.</div>
+            </div>
+            <div class="menu-item-price">15,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Sepia a la plancha</div>
+              <div class="menu-item-desc">Sepia fresca marcada a la plancha con alioli de la casa y crujiente de ajo negro.</div>
+            </div>
+            <div class="menu-item-price">14,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Gambas a la plancha (500 g)</div>
+              <div class="menu-item-desc">Gambas frescas a la plancha con sal de escamas. Simpleza que triunfa. Para mojar pan.</div>
+            </div>
+            <div class="menu-item-price">17,00 €</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Postres ── -->
+      <div class="menu-panel" id="panel-postres">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-badge">Casero</div>
+              <div class="menu-item-name">Crema catalana</div>
+              <div class="menu-item-desc">La auténtica, con piel de limón, canela y azúcar quemado al momento. Fría y crujiente.</div>
+            </div>
+            <div class="menu-item-price">5,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-badge">Casero</div>
+              <div class="menu-item-name">Flan de huevo casero</div>
+              <div class="menu-item-desc">Flan de huevo de corral al baño María con caramelo líquido. El de toda la vida.</div>
+            </div>
+            <div class="menu-item-price">4,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tarta de queso al horno</div>
+              <div class="menu-item-desc">Tarta cremosa estilo San Sebastián, con interior casi líquido. Con coulis de frutos rojos.</div>
+            </div>
+            <div class="menu-item-price">5,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tiramisú</div>
+              <div class="menu-item-desc">Capas de bizcocho empapado en café, mascarpone y cacao en polvo. Receta italiana auténtica.</div>
+            </div>
+            <div class="menu-item-price">5,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Coulant de chocolate</div>
+              <div class="menu-item-desc">Bizcocho tibio con corazón de chocolate fundido. Con bola de helado de vainilla artesano.</div>
+            </div>
+            <div class="menu-item-price">6,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Fruta de temporada</div>
+              <div class="menu-item-desc">Selección de fruta fresca de mercado. La opción ligera para cerrar bien la comida.</div>
+            </div>
+            <div class="menu-item-price">3,50 €</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Bebidas ── -->
+      <div class="menu-panel" id="panel-bebidas">
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Vino de la casa (jarra 1L)</div>
+              <div class="menu-item-desc">Tinto, blanco o rosado. Vino DO Penedès seleccionado por nuestra cocina.</div>
+            </div>
+            <div class="menu-item-price">7,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cerveza caña / botella</div>
+              <div class="menu-item-desc">Estrella Damm de barril o botella. La compañera perfecta de las tapas.</div>
+            </div>
+            <div class="menu-item-price">1,80 / 2,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Sangría de la casa (jarra 1L)</div>
+              <div class="menu-item-desc">Vino tinto, naranja, limón, canela y melocotón. Hecha en casa, sin prisa.</div>
+            </div>
+            <div class="menu-item-price">9,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Agua mineral (50 cl / 1 L)</div>
+              <div class="menu-item-desc">Agua natural o con gas. Font Vella o Vichy Catalán.</div>
+            </div>
+            <div class="menu-item-price">1,50 / 2,50 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Refrescos</div>
+              <div class="menu-item-desc">Coca-Cola, Fanta naranja, Fanta limón, Aquarius, Nestea. Lata 33 cl.</div>
+            </div>
+            <div class="menu-item-price">2,00 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Café solo / cortado / con leche</div>
+              <div class="menu-item-desc">Café de tueste natural, molido al momento. Para cerrar bien cada comida.</div>
+            </div>
+            <div class="menu-item-price">1,50 / 1,60 / 1,80 €</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Chupito digestivo (invita la casa)</div>
+              <div class="menu-item-desc">Con cada menú del día: pacharán, herbero o licor de hierbas de la abuela.</div>
+            </div>
+            <div class="menu-item-price">Gratis</div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Mosto / Zumo natural</div>
+              <div class="menu-item-desc">Zumo de naranja exprimido al momento o mosto de uva sin alcohol. Fresco y natural.</div>
+            </div>
+            <div class="menu-item-price">2,50 / 3,00 €</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Banner Menú del día -->
+      <div class="menu-dia-banner reveal">
+        <div class="menu-dia-info">
+          <h3>🍽️ Menú del día</h3>
+          <p>
+            De lunes a viernes al mediodía · Primero + Segundo + Postre o café<br />
+            Pan, agua o bebida incluidos · Café o postre casero de regalo<br />
+            <strong>Cambia cada día con producto de temporada</strong>
+          </p>
+        </div>
+        <div class="menu-dia-precio">
+          <div class="precio-valor">12 €</div>
+          <div class="precio-label">menú completo</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALERÍA
+  ============================================================ -->
+  <section id="galeria">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Imágenes</span>
+        <h2 class="section-title">Galería</h2>
+        <p class="section-subtitle">Un poco de lo que te espera cuando vengas a vernos.</p>
+      </div>
+
+      <div class="galeria-grid reveal">
+
+        <div class="galeria-item tall" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Paella valenciana" loading="lazy" />
+        </div>
+
+        <div class="galeria-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=600&q=80" alt="Tapas variadas" loading="lazy" />
+        </div>
+
+        <div class="galeria-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Interior del restaurante" loading="lazy" />
+        </div>
+
+        <div class="galeria-item wide" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80" alt="Carne a la brasa" loading="lazy" />
+        </div>
+
+        <div class="galeria-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80" alt="Ambiente del bar" loading="lazy" />
+        </div>
+
+        <div class="galeria-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80" alt="Platos frescos" loading="lazy" />
+        </div>
+
+        <div class="galeria-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&q=80" alt="Gambas al ajillo" loading="lazy" />
+        </div>
+
+        <div class="galeria-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80" alt="Postre casero" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">&times;</button>
+    <img src="" alt="" id="lightboxImg" />
+  </div>
+
+  <!-- ============================================================
+       HORARIOS
+  ============================================================ -->
+  <section id="horarios">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Cuándo encontrarnos</span>
+        <h2 class="section-title">Horario de apertura</h2>
+        <p class="section-subtitle">Abrimos casi todos los días para que siempre tengas una mesa disponible.</p>
+      </div>
+
+      <div class="horarios-grid reveal" id="horariosGrid">
+        <!-- Generado por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       UBICACIÓN
+  ============================================================ -->
+  <section id="ubicacion">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Dónde estamos</span>
+        <h2 class="section-title">Cómo llegar</h2>
+      </div>
+
+      <div class="ubicacion-layout reveal">
+
+        <div class="ubicacion-info">
+          <h3>Bar Restaurante Huelva</h3>
+
+          <div class="ubicacion-dato">
+            <span class="dato-icon">📍</span>
+            <div>
+              <span class="dato-label">Dirección</span>
+              <span class="dato-valor">Avinguda de l'Estatut, 42<br />08191 Rubí, Barcelona</span>
+            </div>
+          </div>
+
+          <div class="ubicacion-dato">
+            <span class="dato-icon">📞</span>
+            <div>
+              <span class="dato-label">Teléfono</span>
+              <span class="dato-valor"><a href="tel:+34640164232">640 164 232</a></span>
+            </div>
+          </div>
+
+          <div class="ubicacion-dato">
+            <span class="dato-icon">💬</span>
+            <div>
+              <span class="dato-label">WhatsApp</span>
+              <span class="dato-valor"><a href="https://wa.me/34640164232" target="_blank" rel="noopener">640 164 232</a></span>
+            </div>
+          </div>
+
+          <div class="ubicacion-dato">
+            <span class="dato-icon">🚌</span>
+            <div>
+              <span class="dato-label">Transporte público</span>
+              <span class="dato-valor">Líneas de bus urbano L1, L2, L5 · Parada Estatut</span>
+            </div>
+          </div>
+
+          <div class="ubicacion-dato">
+            <span class="dato-icon">🚗</span>
+            <div>
+              <span class="dato-label">Aparcamiento</span>
+              <span class="dato-valor">Zona azul en la misma avenida · Parking gratuito en C/ Mas Lluch (5 min a pie)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapa-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2989.6!2d2.033!3d41.493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4958ee0000001%3A0x0!2sAvinguda+de+l%27Estatut%2C+42%2C+08191+Rub%C3%AD%2C+Barcelona!5e0!3m2!1ses!2ses!4v1234567890"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de Bar Restaurante Huelva en Rubí"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACTO
+  ============================================================ -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Hablamos</span>
+        <h2 class="section-title">Contacto y reservas</h2>
+        <p class="section-subtitle">Reserva tu mesa por teléfono, WhatsApp o rellena el formulario. Te confirmamos en menos de 2 horas.</p>
+      </div>
+
+      <div class="contacto-grid reveal">
+
+        <!-- Canales de contacto -->
+        <div>
+          <div class="contacto-canales">
+
+            <a href="tel:+34640164232" class="canal-card">
+              <div class="canal-icon tel">📞</div>
+              <div>
+                <span class="canal-label">Llámanos</span>
+                <span class="canal-valor">640 164 232</span>
+              </div>
+            </a>
+
+            <a href="https://wa.me/34640164232?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Bar%20Restaurante%20Huelva" target="_blank" rel="noopener" class="canal-card">
+              <div class="canal-icon wa">💬</div>
+              <div>
+                <span class="canal-label">WhatsApp</span>
+                <span class="canal-valor">640 164 232</span>
+              </div>
+            </a>
+
+            <a href="mailto:janlopezmontesinos@gmail.com" class="canal-card">
+              <div class="canal-icon mail">✉️</div>
+              <div>
+                <span class="canal-label">Email</span>
+                <span class="canal-valor">janlopezmontesinos@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com" target="_blank" rel="noopener" class="canal-card">
+              <div class="canal-icon ig">📸</div>
+              <div>
+                <span class="canal-label">Instagram</span>
+                <span class="canal-valor">@barrestaurante_huelva</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="contacto-form-wrap">
+          <h3>Reserva tu mesa</h3>
+          <p>Cuéntanos cuándo vendréis y para cuántas personas. Confirmamos enseguida.</p>
+
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+
+            <div class="form-group">
+              <label class="form-label" for="nombre">Nombre completo</label>
+              <input class="form-control" id="nombre" type="text" placeholder="Tu nombre" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="telefono">Teléfono de contacto</label>
+              <input class="form-control" id="telefono" type="tel" placeholder="6XX XXX XXX" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="fecha">Fecha y hora deseada</label>
+              <input class="form-control" id="fecha" type="datetime-local" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="personas">Número de personas</label>
+              <select class="form-control" id="personas">
+                <option value="">Seleccionar...</option>
+                <option value="1">1 persona</option>
+                <option value="2">2 personas</option>
+                <option value="3-4">3 – 4 personas</option>
+                <option value="5-6">5 – 6 personas</option>
+                <option value="7+">7 o más (grupo)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="mensaje">Comentarios (opcional)</label>
+              <textarea class="form-control" id="mensaje" placeholder="¿Alguna alergia, celebración especial o petición?"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Enviar reserva 🍽️</button>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            ✅ ¡Reserva recibida! Te confirmamos por teléfono o WhatsApp en breve. ¡Hasta pronto!
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand-name">Bar Restaurante Huelva</div>
+          <div class="footer-brand-tag">Rubí, Barcelona · Desde 1989</div>
+          <p class="footer-desc">
+            Más de 35 años sirviendo cocina mediterránea casera en el corazón de Rubí.
+            Tapas, raciones, paellas y menú del día de lunes a domingo.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+            <a href="https://wa.me/34640164232" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#nosotros">Sobre nosotros</a></li>
+            <li><a href="#carta">Carta y menú</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#horarios">Horarios</a></li>
+            <li><a href="#ubicacion">Cómo llegar</a></li>
+            <li><a href="#contacto">Reservar mesa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:+34640164232">📞 640 164 232</a></li>
+            <li><a href="https://wa.me/34640164232" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+            <li><a href="mailto:janlopezmontesinos@gmail.com">✉️ janlopezmontesinos@gmail.com</a></li>
+            <li style="color:rgba(255,255,255,.45); font-size:.82rem; margin-top:8px;">
+              Avinguda de l'Estatut, 42<br />08191 Rubí, Barcelona
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Bar Restaurante Huelva · Rubí, Barcelona. Todos los derechos reservados.</p>
+        <p>Diseño web por <a href="mailto:janlopezmontesinos@gmail.com">Jan López Montesinos</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // ── NAV: scroll + burger ──────────────────────────────────────
+    const navbar    = document.getElementById('navbar');
+    const burger    = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+
+    // Cerrar mobile nav al hacer click en un link
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      });
+    });
+
+    // ── MENU TABS ─────────────────────────────────────────────────
+    const tabs = document.querySelectorAll('.menu-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Desactivar todos
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+        // Activar el seleccionado
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    // ── GALERÍA LIGHTBOX ──────────────────────────────────────────
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ── HORARIOS (con día actual destacado) ───────────────────────
+    const horarios = [
+      { dia: 'Lunes',     mañana: '08:00 – 16:30', tarde: '—',              cerrado: false },
+      { dia: 'Martes',    mañana: '08:00 – 16:30', tarde: '20:00 – 23:30', cerrado: false },
+      { dia: 'Miércoles', mañana: '08:00 – 16:30', tarde: '20:00 – 23:30', cerrado: false },
+      { dia: 'Jueves',    mañana: '08:00 – 16:30', tarde: '20:00 – 23:30', cerrado: false },
+      { dia: 'Viernes',   mañana: '08:00 – 17:00', tarde: '20:00 – 00:00', cerrado: false },
+      { dia: 'Sábado',    mañana: '09:00 – 17:00', tarde: '20:00 – 00:00', cerrado: false },
+      { dia: 'Domingo',   mañana: '09:00 – 17:00', tarde: '—',              cerrado: false },
+    ];
+
+    const hoy = new Date().getDay(); // 0=domingo, 1=lunes...
+    // Reordenar para que lunes=0
+    const diaIndex = hoy === 0 ? 6 : hoy - 1;
+
+    const grid = document.getElementById('horariosGrid');
+    horarios.forEach((h, i) => {
+      const esHoy = i === diaIndex;
+      const div = document.createElement('div');
+      div.className = 'horario-card' + (esHoy ? ' hoy' : '');
+      div.innerHTML = `
+        <div class="horario-dia">
+          ${h.dia}${esHoy ? '<span class="horario-hoy-badge">Hoy</span>' : ''}
+        </div>
+        <div class="horario-horas">
+          ${h.cerrado
+            ? '<span class="horario-cerrado">Cerrado</span>'
+            : `🌅 Mediodía: ${h.mañana}<br>🌙 Noche: ${h.tarde === '—' ? '<span style="opacity:.5">Cerrado</span>' : h.tarde}`
+          }
+        </div>
+      `;
+      grid.appendChild(div);
+    });
+
+    // ── SCROLL REVEAL ─────────────────────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── FORMULARIO ────────────────────────────────────────────────
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form    = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+      form.style.display    = 'none';
+      success.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
